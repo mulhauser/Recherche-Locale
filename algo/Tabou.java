@@ -60,8 +60,20 @@ public class Tabou extends AlgorithmeAbstract {
 		// 2) la methode chercherMeilleureSolution qui retourne la
 		// meilleure solution à partir d'une liste de solution
 
-		throw new Error("TODO"); // TODO  a completer
+		//throw new Error("TODO"); // TODO  a completer
 
+        boolean fin = false;
+        List<SolutionAbstract> solution;
+        SolutionAbstract sol;
+        while(!fin){
+            solution = solutionEnCours.retourneVoisinage();
+            filtrer(solution);
+            sol = chercherMeilleureSolution(solution);
+
+
+        }
+
+        return fin;
 	}
 
 	/**
@@ -74,8 +86,16 @@ public class Tabou extends AlgorithmeAbstract {
 	 */
 	private SolutionAbstract chercherMeilleureSolution(List<SolutionAbstract> solutionsVoisines) {
 
-		throw new Error("TODO"); // TODO  a completer etudiants
-
+		//throw new Error("TODO"); // TODO  a completer etudiants
+        SolutionAbstract solution = null;
+        double max = 0.0;
+        for(SolutionAbstract sol : solutionsVoisines){
+            if(max < problemeATraiter.evaluation(sol)){
+                max = problemeATraiter.evaluation(sol);
+                solution = sol;
+            }
+        }
+        return solution;
 	}
 
 	/**
@@ -88,7 +108,15 @@ public class Tabou extends AlgorithmeAbstract {
 
 	private void filtrer(List<SolutionAbstract> solutionsVoisines) {
 
-		throw new Error("TODO"); // TODO  a completer
+		//throw new Error("TODO"); // TODO  a completer
+        List<SolutionAbstract> listeIntermediaire = solutionsVoisines;
+        for(SolutionAbstract sol : listeIntermediaire){
+            if(tabou.accepter(sol)){
+                tabou.update(sol);
+            }else{
+                solutionsVoisines.remove(sol);
+            }
+        }
 	}
 
 }

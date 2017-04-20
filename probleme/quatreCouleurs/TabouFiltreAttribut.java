@@ -82,8 +82,9 @@ public class TabouFiltreAttribut extends TabouFiltreAbstract {
 		// penser à mettre à jour la derniere solution acceptee pour la
 		// prochaine utilisation du filtre
 
-		throw new Error("TODO"); // TODO  a completer
-
+		//throw new Error("TODO"); // TODO  a completer
+		//zonesRefusees.add(s.);
+		//derniereAcceptee = s;
 	}
 
 	/**
